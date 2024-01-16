@@ -1,9 +1,9 @@
 # Windows 11 Battery Alert
-This repository contains a Python script that alerts the user when their device’s battery is fully charged. The script can be automated using the task manager to run at regular intervals and check the battery status. This way, the user can be notified when their battery is fully charged without having to constantly check it themselves.
+This repository contains a Python script that alerts the user when their device’s battery is fully charged. The script can be automated using the task scheduler to run at regular intervals and check the battery status. This way, the user can be notified when their battery is fully charged without having to constantly check it themselves.
 ## Usage
  1. Clone this repository to your local machine.
  2. Run the script using a Python interpreter.
- 3. (Optional) Set up the script to run at regular intervals using your operating system's task manager.
+ 3. (Optional) Set up the script to run at regular intervals using your operating system's task scheduler.
 
 ## Automating Alerts with Task Scheduler
  1. Open the Task Scheduler by searching for "Task Scheduler" in the Start menu.
