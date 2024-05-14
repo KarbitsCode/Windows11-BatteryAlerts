@@ -1,6 +1,6 @@
+from psutil import sensors_battery
 from win11toast import toast
 from time import sleep
-from psutil import sensors_battery
 
 charging_toast = 0
 uncharged_toast = 0
