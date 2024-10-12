@@ -9,4 +9,4 @@ icon_image ="https://images.pexels.com/photos/1694830/pexels-photo-1694830.jpeg?
 
 # Check if battery is fully charged and plugged in
 if plugged and percent == "100":
-    toast('Charging Status🔋', 'Fully charged! Unplug your laptop', icon=icon_image,button='Dismiss')
+    toast('Charging Status🔋', 'Fully charged! Unplug your laptop.', icon=icon_image,button='Dismiss')
