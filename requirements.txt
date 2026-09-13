@@ -2,3 +2,4 @@ win11toast
 psutil
 keyboard
 pymsgbox
+nuitka

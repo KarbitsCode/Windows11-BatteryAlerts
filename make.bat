@@ -1,2 +1,1 @@
-pyinstaller --clean --noconfirm --noupx battery_status.pyw
-pyinstaller --clean --noconfirm --onefile battery_status.pyw
+nuitka --standalone --windows-console-mode=disable --include-windows-runtime-dlls=yes --include-module=winrt.windows.foundation.collections --windows-icon-from-ico=windowed.ico --output-dir=dist --assume-yes-for-downloads battery_status.pyw
