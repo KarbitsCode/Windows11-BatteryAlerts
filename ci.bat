@@ -1,1 +1,1 @@
-make.bat
+pip install -r requirements.txt && make.bat
