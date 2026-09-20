@@ -1,9 +1,12 @@
 from psutil import sensors_battery
 from win11toast import toast
 from pymsgbox import alert
+from pathlib import Path
 from time import sleep
+import threading
+import traceback
+import datetime
 import keyboard
-import os
 
 charging_toast = 0
 uncharged_toast = 0
@@ -14,9 +17,26 @@ running = 1
 def flip():
     global running
     running = not running
-    alert(f"Running status changed to: {bool(running)}", os.path.basename(__file__))
+    alert(f"Running status changed to: {bool(running)}", Path(__file__).name)
 
-keyboard.add_hotkey('ctrl+shift+alt+o', flip)
+def watchdog():
+    while True:
+        try:
+            keyboard.unhook_all()
+            keyboard.add_hotkey('ctrl+shift+alt+o', flip)
+        except Exception as e:
+            print(f"watchdog re-register failed: {e}")
+        sleep(1800)
+
+def log_thread_exception(args):
+    with open("keyboard_crash.log", "a") as f:
+        f.write(f"\n--- {datetime.datetime.now()} ---\n")
+        f.write(f"Thread: {args.thread.name}\n")
+        traceback.print_exception(args.exc_type, args.exc_value, args.exc_traceback, file=f)
+
+Path("keyboard_crash.log").unlink(missing_ok=True)
+threading.excepthook = log_thread_exception
+threading.Thread(target=watchdog, daemon=True).start()
 
 while running:
     battery = sensors_battery()
